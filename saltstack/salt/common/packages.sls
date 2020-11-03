@@ -4,3 +4,4 @@ common_packages:
       - htop
       - strace
       - vim
+      - tree

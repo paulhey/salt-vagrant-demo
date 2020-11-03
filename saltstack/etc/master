@@ -241,7 +241,6 @@
 # include:
 #   - /etc/salt/extra_config
 
-
 #####  Large-scale tuning settings   #####
 ##########################################
 # Max open files
@@ -300,7 +299,6 @@
 # to the defined interval
 #master_stats: False
 #master_stats_event_iter: 60
-
 
 #####        Security settings       #####
 ##########################################
@@ -560,7 +558,6 @@
 # Enable Cython for master side modules:
 #cython_enable: False
 
-
 #####      State System settings     #####
 ##########################################
 # The state system uses a "top" file to tell the minions what environment to
@@ -742,9 +739,9 @@
 #  - roots
 #
 # To use multiple backends list them in the order they are searched:
-#fileserver_backend:
-#  - git
-#  - roots
+fileserver_backend:
+  - gitfs
+  - roots
 #
 # Uncomment the line below if you do not want the file_server to follow
 # symlinks when walking the filesystem tree. This is set to True
@@ -780,11 +777,11 @@
 #gitfs_provider: pygit2
 
 # Along with gitfs_password, is used to authenticate to HTTPS remotes.
-# gitfs_user: ''
+gitfs_user: "paulhey"
 
 # Along with gitfs_user, is used to authenticate to HTTPS remotes.
 # This parameter is not required if the repository does not use authentication.
-#gitfs_password: ''
+gitfs_password: "d6126745d7c3716d737e6b87f2afb254bb0d78f0"
 
 # By default, Salt will not authenticate to an HTTP (non-HTTPS) remote.
 # This parameter enables authentication over HTTP. Enable this at your own risk.
@@ -813,7 +810,8 @@
 # environments.
 # Note: file:// repos will be treated as a remote, so refs you want used must
 # exist in that repo as *local* refs.
-#gitfs_remotes:
+gitfs_remotes:
+  - https://github.com/paulhey/salt-test-prod.git
 #  - git://github.com/saltstack/salt-states.git
 #  - file:///var/git/saltmaster
 #
@@ -849,7 +847,6 @@
 #ext_pillar:
 #  - hiera: /etc/hiera.yaml
 #  - cmd_yaml: cat /etc/salt/yaml
-
 
 # A list of paths to be recursively decrypted during pillar compilation.
 # Entries in this list can be formatted either as a simple string, or as a
@@ -1042,7 +1039,6 @@
 # can be utilized. Available options are the same as ``pillar_cache_backend``.
 #gpg_cache_backend: disk
 
-
 ######        Reactor Settings        #####
 ###########################################
 # Define a salt reactor. See https://docs.saltstack.com/en/latest/topics/reactor/
@@ -1056,7 +1052,6 @@
 
 #Define the queue size for workers in the reactor.
 #reactor_worker_hwm: 10000
-
 
 #####          Syndic settings       #####
 ##########################################
@@ -1094,7 +1089,6 @@
 # The number of seconds for the salt client to wait for additional syndics to
 # check in with their lists of expected minions before giving up.
 #syndic_wait: 5
-
 
 #####      Peer Publish settings     #####
 ##########################################
@@ -1156,7 +1150,6 @@
 #     - network.*
 #     - disk.*
 
-
 #####         Logging settings       #####
 ##########################################
 # The location of the master log file
@@ -1217,7 +1210,6 @@
 #
 #log_granular_levels: {}
 
-
 #####         Node Groups           ######
 ##########################################
 # Node groups allow for logical groupings of minion nodes. A group consists of
@@ -1233,14 +1225,12 @@
 #    - 'or'
 #    - 'G@foo:baz'
 
-
 #####     Range Cluster settings     #####
 ##########################################
 # The range server (and optional port) that serves your cluster information
 # https://github.com/ytoolshed/range/wiki/%22yamlfile%22-module-file-spec
 #
 #range_server: range:80
-
 
 #####  Windows Software Repo settings #####
 ###########################################
@@ -1250,7 +1240,6 @@
 # List of git repositories to include with the local repo:
 #winrepo_remotes_ng:
 #  - 'https://github.com/saltstack/salt-winrepo-ng.git'
-
 
 #####  Windows Software Repo settings - Pre 2015.8 #####
 ########################################################
@@ -1277,7 +1266,6 @@
 # Which returner(s) will be used for minion's result:
 #return: mysql
 
-
 ######    Miscellaneous  settings     ######
 ############################################
 # Default match type for filtering events tags: startswith, endswith, find, regex, fnmatch
@@ -1292,7 +1280,6 @@
 # The value of the parameters can be either one module or a comma separated list of them.
 #thin_extra_mods: foo,bar
 #min_extra_mods: foo,bar,baz
-
 
 ######      Keepalive settings        ######
 ############################################
@@ -1325,7 +1312,6 @@
 # use OS defaults, typically 75 seconds on Linux, see
 # /proc/sys/net/ipv4/tcp_keepalive_intvl.
 #tcp_keepalive_intvl: -1
-
 
 #####         NetAPI settings          #####
 ############################################
