@@ -20,16 +20,17 @@
 
     - name: Add SaltStack Apt Repo
       apt_repository:
-        repo: deb http://repo.saltstack.com/py3/ubuntu/18.04/amd64/latest bionic main
+        repo: deb http://repo.saltstack.com/py3/ubuntu/20.04/amd64/latest focal main
 
     - name: Install list of Apt Packages
       apt:
-        name: ["python-is-python3", "salt-master"]
+        name: ["python-is-python3", "salt-master", "python3-pygit2"]
         #"salt-minion",
         #"salt-ssh",
         #"salt-api"
         state: present
         update_cache: yes
+        #
         #- name: Accept Master Minion Key
         #shell: |
         #if [[ $(salt-key -l unaccepted | grep $(hostname)) ]];
