@@ -2,6 +2,18 @@
 - hosts: all # salt.camosun.ca
   become: true
   tasks:
+    - name: Initialize some Apt packages
+      apt:
+        name:
+          [
+            "apt-transport-https",
+            "ca-certificates",
+            "curl",
+            "software-properties-common",
+          ]
+        state: present
+        update_cache: yes
+
     - name: Add SaltStack GPG key
       apt_key:
         url: https://repo.saltstack.com/py3/ubuntu/18.04/amd64/latest/SALTSTACK-GPG-KEY.pub
@@ -12,15 +24,7 @@
 
     - name: Install list of Apt Packages
       apt:
-        name:
-          [
-            "python-is-python3",
-            "apt-transport-https",
-            "ca-certificates",
-            "curl",
-            "software-properties-common",
-            "salt-master",
-          ]
+        name: ["python-is-python3", "salt-master"]
         #"salt-minion",
         #"salt-ssh",
         #"salt-api"
