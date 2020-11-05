@@ -774,14 +774,14 @@ fileserver_backend:
 # order), and the first one with a compatible version installed will be the
 # provider that is used.
 #
-#gitfs_provider: pygit2
+gitfs_provider: pygit2
 
 # Along with gitfs_password, is used to authenticate to HTTPS remotes.
 gitfs_user: "paulhey"
 
 # Along with gitfs_user, is used to authenticate to HTTPS remotes.
 # This parameter is not required if the repository does not use authentication.
-gitfs_password: "d6126745d7c3716d737e6b87f2afb254bb0d78f0"
+gitfs_password: "#GITFS_KEY#"
 
 # By default, Salt will not authenticate to an HTTP (non-HTTPS) remote.
 # This parameter enables authentication over HTTP. Enable this at your own risk.
