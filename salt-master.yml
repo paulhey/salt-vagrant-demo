@@ -24,7 +24,7 @@
 
     - name: Install list of Apt Packages
       apt:
-        name: ["python-is-python3", "salt-master", "python3-pygit2"]
+        name: ["salt-master", "python3-pip", "python3-pygit2"]
         #"salt-minion",
         #"salt-ssh",
         #"salt-api"
