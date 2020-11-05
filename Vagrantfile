@@ -21,6 +21,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master_config.vm.synced_folder 'saltstack/salt/', '/srv/salt'
     master_config.vm.synced_folder 'saltstack/pillar/', '/srv/pillar'
 
+    master_config.vm.provision :ansible do |ansible|
+      ansible.playbook = 'salt-master.yml'
+    end
+
     master_config.vm.provision :salt do |salt|
       salt.master_config = 'saltstack/etc/master'
       salt.master_key = 'saltstack/keys/master_minion.pem'
