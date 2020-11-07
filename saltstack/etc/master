@@ -657,11 +657,13 @@
 # roots cannot match, otherwise the downloaded files will not be able to be
 # reliably ensured. A base environment is required to house the top file.
 # Example:
-# file_roots:
-#   base:
-#     - /srv/salt/
-#   dev:
-#     - /srv/salt/dev/services
+file_roots:
+  base:
+    - /srv/salt/
+  dev:
+    - /srv/salt/dev/
+    - /srv/salt/
+
 #     - /srv/salt/dev/states
 #   prod:
 #     - /srv/salt/prod/services
@@ -811,10 +813,20 @@ gitfs_password: "#GITFS_KEY#"
 # Note: file:// repos will be treated as a remote, so refs you want used must
 # exist in that repo as *local* refs.
 gitfs_remotes:
-  - https://github.com/paulhey/salt-test-prod.git
+  - https://github.com/paulhey/salt-test-prod.git:
+      - saltenv: prod
+  - https://github.com/paulhey/salt-test-dev.git:
+      - saltenv: dev
 #  - git://github.com/saltstack/salt-states.git
 #  - file:///var/git/saltmaster
-#
+
+gitfs_saltenv:
+  - dev:
+      - root: dev
+      - mountpoint: salt://dev
+  - prod:
+      - root: prod
+      - mountpoint: salt://prod
 # The gitfs_ssl_verify option specifies whether to ignore ssl certificate
 # errors when contacting the gitfs backend. You might want to set this to
 # false if you're using a git backend that uses a self-signed certificate but
